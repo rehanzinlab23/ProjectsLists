@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+* {
+     font-family: monospace;
+}
+
+body {
+     margin: 0;
+     padding: 0;
+     background-color: black;
+}
+
+input {
+     outline: none;
+}
