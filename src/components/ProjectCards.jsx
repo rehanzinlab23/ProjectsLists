@@ -1,4 +1,4 @@
-import { Presentation, X } from "lucide-react";
+import { CircleAlert, X } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -14,10 +14,18 @@ import {
 const ProjectCards = ({ linksList, onDelete }) => {
   if (linksList.length === 0) {
     return (
-      <div className="py-20 text-center rounded-xl mt-32">
-        <Presentation className="mx-auto text-gray-700 mb-2" size={48} />
-        <p className="text-gray-600 font-bold uppercase text-3xl tracking-widest">
-          No Projects Found Yet
+      <div className="min-h-[78vh] flex flex-col items-center justify-center">
+        <div className="relative w-28 h-28 rounded-full flex items-center justify-center mb-6">
+          <span className="shrink-0 bg-slate-800 border border-slate-700 rounded-full h-30 w-30 flex items-center justify-center">
+            <CircleAlert size={64} strokeWidth={1.5} className="text-white" />
+          </span>
+        </div>
+        <h1 className="text-3xl sm:text-5xl text-center font-extrabold leading-tight mb-2 text-white">
+          Project Not Found
+        </h1>
+        <p className="max-w-2xl text-gray-500 text-sm text-center">
+          The project you're looking for doesn't exist or has been removed.
+          Click on the button to add a new project.
         </p>
       </div>
     );
@@ -40,7 +48,7 @@ const ProjectCards = ({ linksList, onDelete }) => {
                 <img
                   src={link.img}
                   alt={link.title}
-                  className=" max-w-9 max-h-9  "
+                  className=" max-w-9 max-h-9"
                 />
               </div>
               <h3 className="text-2xl mt-4 pl-3 font-bold capitalize text-white">
@@ -53,8 +61,7 @@ const ProjectCards = ({ linksList, onDelete }) => {
                       <X size={20} className="text-white  " />
                     </button>
                   </AlertDialogTrigger>
-
-                  <AlertDialogContent>
+                  <AlertDialogContent className="bg-slate-800">
                     <AlertDialogHeader>
                       <AlertDialogTitle>
                         Delete "{link.title}"?
@@ -66,7 +73,9 @@ const ProjectCards = ({ linksList, onDelete }) => {
                     </AlertDialogHeader>
 
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogCancel className="bg-transparent text-white border border-slate-600">
+                        Cancel
+                      </AlertDialogCancel>
                       <AlertDialogAction
                         onClick={() => onDelete(link.id)}
                         className="bg-red-600 hover:bg-red-700"
