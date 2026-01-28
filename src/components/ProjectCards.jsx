@@ -1,4 +1,4 @@
-import { CircleAlert, X } from "lucide-react";
+import { CircleAlert, X, Pencil } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -11,7 +11,7 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 
-const ProjectCards = ({ linksList, onDelete }) => {
+const ProjectCards = ({ linksList, onDelete, setEditProject }) => {
   if (linksList.length === 0) {
     return (
       <div className="min-h-[78vh] flex flex-col items-center justify-center">
@@ -42,23 +42,29 @@ const ProjectCards = ({ linksList, onDelete }) => {
           {linksList.map((link) => (
             <div
               key={link.id}
-              className="bg-slate-900 rounded-xl border border-slate-800 hover:border-slate-700 shadow-md p-5 flex flex-col transition relative duration-300 hover:scale-[1.02]"
+              className="group bg-slate-900 rounded-xl border border-slate-800 hover:border-slate-700 shadow-md p-5 flex flex-col transition relative duration-300 hover:scale-[1.02]"
             >
               <div className="h-18 w-18 bg-slate-800 border border-slate-700 rounded-full shrink-0 flex items-center justify-center">
                 <img
                   src={link.img}
                   alt={link.title}
-                  className=" max-w-9 max-h-9"
+                  className="max-w-9 max-h-9"
                 />
               </div>
               <h3 className="text-2xl mt-4 pl-3 font-bold capitalize text-white">
                 {link.title}
               </h3>
-              <div className="absolute top-4 right-4">
+              <div className="absolute top-4 right-4 flex gap-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition">
+                <button
+                  onClick={() => setEditProject(link)}
+                  className="bg-slate-800 rounded-full h-10 hover:bg-slate-700 border border-slate-700 cursor-pointer w-10 flex items-center justify-center"
+                >
+                  <Pencil size={18} className="text-white" />
+                </button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <button className="bg-slate-800 rounded-full h-10 hover:bg-slate-700 border border-slate-700 cursor-pointer w-10 flex items-center justify-center">
-                      <X size={20} className="text-white  " />
+                      <X size={20} className="text-white" />
                     </button>
                   </AlertDialogTrigger>
                   <AlertDialogContent className="bg-slate-800">

@@ -3,9 +3,18 @@ import InputBox from "./InputBox";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import SVGComponent from "./SvgComponent";
+import Input from "./Input";
 
-const Navbar = ({ onAddProject, searchTerm, setSearchTerm, linksList }) => {
+const Navbar = ({
+  onAddProject,
+  searchTerm,
+  setSearchTerm,
+  linksList,
+  editProject,
+  setEditProject,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
@@ -19,20 +28,23 @@ const Navbar = ({ onAddProject, searchTerm, setSearchTerm, linksList }) => {
     <>
       <nav className="relative flex py-5 bg-slate-900 mb-6">
         <div className="container mx-auto px-3">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full items-center">
+          <div className="flex  justify-between items-center gap-4 w-full ">
             <div className="flex items-center gap-2">
               <SVGComponent />
-              <span className="text-white text-xl text-center uppercase font-semibold whitespace-nowrap">
+              <span className="text-white text-xl text-center uppercase font-semibold">
                 Project Lists
               </span>
             </div>
-            <InputBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <div className="sm:justify-end flex items-center">
+            <Input searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <div className="justify-end flex items-center">
+              <InputBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
               <SaveYourForm
                 onAddProject={onAddProject}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 linksList={linksList}
+                editProject={editProject}
+                setEditProject={setEditProject}
               />
             </div>
           </div>
