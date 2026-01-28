@@ -67,7 +67,6 @@ const SaveYourForm = ({
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
           <div className="w-full max-w-2xl max-h-[80vh] flex flex-col bg-slate-900 rounded-xl border border-slate-800 hover:border-slate-700 shadow-md p-5 transition relative duration-300">
-            {/* Header */}
             <div className="p-4 pb-3 border-b border-gray-700 flex justify-between items-center">
               <h2 className="text-2xl font-bold text-white">
                 Save Your Projects
@@ -79,7 +78,6 @@ const SaveYourForm = ({
                 <X size={20} className="text-white" />
               </button>
             </div>
-            {/* Modal */}
             <div className="p-6 overflow-y-auto">
               <form
                 className="flex justify-center shrink-0 flex-col w-full"
