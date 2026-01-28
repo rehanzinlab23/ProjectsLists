@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useProjects } from "../context/ProjectContext";
 import Input from "./Input";
 import InputBox from "./InputBox";
 import SaveYourForm from "./SaveYourForm";
 import SVGComponent from "./SvgComponent";
 import { Plus } from "lucide-react";
+import { useProjects } from "../context/ProjectContext";
 
 const Navbar = () => {
   const {
