@@ -10,9 +10,16 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
+import { useProjects } from "../context/ProjectContext";
 
-const ProjectCards = ({ linksList, onDelete, setEditProject }) => {
-  if (linksList.length === 0) {
+const ProjectCards = () => {
+  const { linksList, handleDelete, setEditProject, searchTerm } = useProjects();
+
+  const filteredLinks = linksList.filter((link) =>
+    link.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  if (filteredLinks.length === 0) {
     return (
       <div className="min-h-[78vh] flex flex-col items-center justify-center">
         <div className="relative w-28 h-28 rounded-full flex items-center justify-center mb-6">
@@ -39,7 +46,7 @@ const ProjectCards = ({ linksList, onDelete, setEditProject }) => {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-          {linksList.map((link) => (
+          {filteredLinks.map((link) => (
             <div
               key={link.id}
               className="group bg-slate-900 rounded-xl border border-slate-800 hover:border-slate-700 shadow-md p-5 flex flex-col transition relative duration-300 hover:scale-[1.02]"
@@ -83,7 +90,7 @@ const ProjectCards = ({ linksList, onDelete, setEditProject }) => {
                         Cancel
                       </AlertDialogCancel>
                       <AlertDialogAction
-                        onClick={() => onDelete(link.id)}
+                        onClick={() => handleDelete(link.id)}
                         className="bg-red-600 hover:bg-red-700"
                       >
                         Delete
