@@ -7,6 +7,7 @@ export const ProjectProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [editProject, setEditProject] = useState(null);
   const [linksList, setLinksList] = useState([]);
+  const [visible, setVisible] = useState(8);
 
   const sortAZ = () => {
     const sorted = [...linksList].sort((a, b) =>
@@ -81,6 +82,8 @@ export const ProjectProvider = ({ children }) => {
         updateProject,
         filteredLinks,
         sortAZ,
+        visible,
+        setVisible,
       }}
     >
       {children}

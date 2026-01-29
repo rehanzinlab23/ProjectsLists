@@ -13,7 +13,14 @@ import {
 import { useProjects } from "../context/use-project";
 
 const ProjectCards = () => {
-  const { handleDelete, setEditProject, filteredLinks, sortAZ } = useProjects();
+  const {
+    handleDelete,
+    setEditProject,
+    filteredLinks,
+    sortAZ,
+    visible,
+    setVisible,
+  } = useProjects();
 
   if (filteredLinks.length === 0) {
     return (
@@ -49,7 +56,7 @@ const ProjectCards = () => {
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-          {filteredLinks.map((link) => (
+          {filteredLinks.slice(0, visible).map((link) => (
             <div
               key={link.id}
               className="group bg-slate-900 rounded-xl border border-slate-800 hover:border-slate-700 shadow-md p-5 flex flex-col transition relative duration-300 hover:scale-[1.02]"
@@ -114,6 +121,16 @@ const ProjectCards = () => {
             </div>
           ))}
         </div>
+        {visible < filteredLinks.length && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setVisible((prev) => prev + 8)}
+              className="flex items-center justify-center whitespace-nowrap rounded-full text-base font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 text-white bg-slate-800 px-7 cursor-pointer h-14 hover:bg-slate-800/80"
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
