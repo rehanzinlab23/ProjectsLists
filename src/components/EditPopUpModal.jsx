@@ -69,7 +69,7 @@ const EditPopupModal = ({ link, setProject, updateProject }) => {
                 className="flex items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
               >
                 <Plus className="mr-3 h-6 w-6" />
-                Update
+                Update Project
               </button>
 
               <button
@@ -78,7 +78,7 @@ const EditPopupModal = ({ link, setProject, updateProject }) => {
                 className="flex items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
               >
                 <X className="mr-3 h-6 w-6" />
-                Cancel
+                Cancel Project
               </button>
             </div>
           </form>

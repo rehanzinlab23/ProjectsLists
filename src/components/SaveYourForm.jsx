@@ -141,7 +141,7 @@ const SaveYourForm = ({
                     className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
                   >
                     <Plus className="mr-3 h-6 w-6" />
-                    <span>Add</span>
+                    <span>Add Project</span>
                   </button>
                   <button
                     onClick={ModalClose}
@@ -149,7 +149,7 @@ const SaveYourForm = ({
                     className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
                   >
                     <X className="mr-3 h-6 w-6" />
-                    <span>Cancel</span>
+                    <span>Cancel Project</span>
                   </button>
                 </div>
               </form>
