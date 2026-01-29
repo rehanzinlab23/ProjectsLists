@@ -18,7 +18,7 @@ const EditPopupModal = ({ link, setProject, updateProject }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-      <div className="w-full max-w-2xl max-h-[80vh] flex flex-col bg-slate-900 rounded-xl border border-slate-800 shadow-md p-5 relative duration-300">
+      <div className="w-full max-w-2xl max-h-[80vh] mx-4 flex flex-col bg-slate-900 rounded-xl border border-slate-800 shadow-md p-5 relative duration-300">
         <div className="p-4 pb-3 border-b border-gray-700 flex justify-between items-center">
           <h2 className="text-2xl font-bold text-white">Edit Project</h2>
           <button
