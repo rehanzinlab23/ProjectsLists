@@ -63,10 +63,10 @@ const EditPopupModal = ({ link, setProject, updateProject }) => {
               className="py-3 pl-3.5 text-base rounded-2xl border border-slate-700 bg-slate-800 outline-none text-white w-full"
             />
 
-            <div className="flex justify-between items-center mt-8">
+            <div className="flex flex-col gap-4 sm:flex-row justify-between items-center mt-8">
               <button
                 type="submit"
-                className="flex items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
+                className="flex items-center justify-center grow whitespace-nowrap rounded-2xl text-lg font-bold transition-colors h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
               >
                 <Plus className="mr-3 h-6 w-6" />
                 Update Project
@@ -75,7 +75,7 @@ const EditPopupModal = ({ link, setProject, updateProject }) => {
               <button
                 type="button"
                 onClick={handleClose}
-                className="flex items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
+                className="flex items-center justify-center grow whitespace-nowrap rounded-2xl text-lg font-bold transition-colors h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
               >
                 <X className="mr-3 h-6 w-6" />
                 Cancel Project

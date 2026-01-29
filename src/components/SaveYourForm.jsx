@@ -134,11 +134,11 @@ const SaveYourForm = ({
                   onChange={handleImgUrlChange}
                   className="py-3 pl-3.5 text-base rounded-2xl border border-slate-700 bg-slate-800 outline-none text-white w-full"
                 />
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mt-8">
                   <button
                     type="submit"
                     disabled={!!error}
-                    className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
+                    className="flex items-center justify-center grow whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
                   >
                     <Plus className="mr-3 h-6 w-6" />
                     <span>Add Project</span>
@@ -146,7 +146,7 @@ const SaveYourForm = ({
                   <button
                     onClick={ModalClose}
                     type="submit"
-                    className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
+                    className="flex items-center justify-center grow whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
                   >
                     <X className="mr-3 h-6 w-6" />
                     <span>Cancel Project</span>
