@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 
 export default function InputBox({ searchTerm, setSearchTerm }) {
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState("");
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -21,11 +20,9 @@ export default function InputBox({ searchTerm, setSearchTerm }) {
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       if (searchTerm.trim() === "") {
-        setError("Input cannot be empty!");
-      } else {
-        setError("");
-        setOpen(false);
+        return;
       }
+      setOpen(false);
     }
   };
 
@@ -53,12 +50,10 @@ export default function InputBox({ searchTerm, setSearchTerm }) {
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
-                if (error) setError("");
               }}
               onKeyDown={handleEnter}
               className="w-105 max-w-[90vw] bg-transparent text-4xl text-white font-bold placeholder:text-white border-b border-[rgba(255,255,255,0.13)] outline-none py-2"
             />
-            {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
             <p className="mt-4 text-sm text-white/70">
               Type above and press <b className="text-white">Enter</b> to
               search.

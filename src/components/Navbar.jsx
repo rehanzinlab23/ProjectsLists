@@ -4,7 +4,7 @@ import InputBox from "./InputBox";
 import SaveYourForm from "./SaveYourForm";
 import SVGComponent from "./SvgComponent";
 import { Plus } from "lucide-react";
-import { useProjects } from "../context/ProjectContext";
+import { useProjects } from "../context/use-project";
 
 const Navbar = () => {
   const {

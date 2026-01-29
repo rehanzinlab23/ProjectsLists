@@ -1,12 +1,13 @@
 import Navbar from "./components/Navbar";
 import ProjectCards from "./components/ProjectCards";
+import { ProjectProvider } from "./context/ProjectContext";
 
 const App = () => {
   return (
-    <div>
+    <ProjectProvider>
       <Navbar />
       <ProjectCards />
-    </div>
+    </ProjectProvider>
   );
 };
 

@@ -18,23 +18,22 @@ const SaveYourForm = ({
       setError("");
       return;
     }
+
     const lower = title.toLowerCase().trim();
-    const exists = linksList.some((link) => link.title.toLowerCase() === lower);
+
+    const exists = linksList.some((link) => {
+      if (editProject && link.id === editProject.id) {
+        return false;
+      }
+      return link.title.toLowerCase() === lower;
+    });
+
     if (exists) {
       setError("Project already exists!");
     } else {
       setError("");
     }
-  }, [title, linksList]);
-
-  useEffect(() => {
-    if (editProject) {
-      setTitle(editProject.title);
-      setUrl(editProject.url);
-      setImgUrl(editProject.img);
-      setIsOpen(true);
-    }
-  }, [editProject]);
+  }, [title, linksList, editProject]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -55,6 +54,13 @@ const SaveYourForm = ({
     }
   };
 
+  const ModalClose = () => {
+    setTitle("");
+    setUrl("");
+    setImgUrl("");
+    setIsOpen(false);
+  };
+
   return (
     <>
       <button
@@ -72,7 +78,7 @@ const SaveYourForm = ({
                 Save Your Projects
               </h2>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={ModalClose}
                 className="bg-slate-800 rounded-full h-10 hover:bg-slate-700 border border-slate-700 cursor-pointer w-10 flex items-center justify-center"
               >
                 <X size={20} className="text-white" />
@@ -128,14 +134,24 @@ const SaveYourForm = ({
                   onChange={handleImgUrlChange}
                   className="py-3 pl-3.5 text-base rounded-2xl border border-slate-700 bg-slate-800 outline-none text-white w-full"
                 />
-                <button
-                  type="submit"
-                  disabled={!!error}
-                  className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
-                >
-                  <Plus className="mr-3 h-6 w-6" />
-                  <span>{editProject ? "Update Project" : "Add Project"}</span>
-                </button>
+                <div className="flex justify-between items-center">
+                  <button
+                    type="submit"
+                    disabled={!!error}
+                    className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
+                  >
+                    <Plus className="mr-3 h-6 w-6" />
+                    <span>Add</span>
+                  </button>
+                  <button
+                    onClick={ModalClose}
+                    type="submit"
+                    className="flex mt-8 items-center justify-center whitespace-nowrap rounded-2xl text-lg font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 h-16 text-white bg-slate-800 px-7 cursor-pointer hover:bg-slate-800/80"
+                  >
+                    <X className="mr-3 h-6 w-6" />
+                    <span>Cancel</span>
+                  </button>
+                </div>
               </form>
             </div>
           </div>

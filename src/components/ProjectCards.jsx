@@ -10,14 +10,10 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
-import { useProjects } from "../context/ProjectContext";
+import { useProjects } from "../context/use-project";
 
 const ProjectCards = () => {
-  const { linksList, handleDelete, setEditProject, searchTerm } = useProjects();
-
-  const filteredLinks = linksList.filter((link) =>
-    link.title.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const { handleDelete, setEditProject, filteredLinks, sortAZ } = useProjects();
 
   if (filteredLinks.length === 0) {
     return (
@@ -41,10 +37,17 @@ const ProjectCards = () => {
   return (
     <div className="container mx-auto px-3">
       <div className="py-20 rounded-xl mt-6">
-        <h2 className="text-4xl text-white font-semibold mb-8">
-          Project Cards
-        </h2>
-
+        <div className="flex items-center justify-between">
+          <h2 className="text-4xl text-white font-semibold mb-8">
+            Project Cards
+          </h2>
+          <button
+            onClick={sortAZ}
+            className="mb-8 flex items-center justify-center whitespace-nowrap rounded-full text-base font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 text-white bg-slate-800 px-7 cursor-pointer h-14 hover:bg-slate-800/80"
+          >
+            Sort A-Z
+          </button>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
           {filteredLinks.map((link) => (
             <div
@@ -55,10 +58,10 @@ const ProjectCards = () => {
                 <img
                   src={link.img}
                   alt={link.title}
-                  className="max-w-9 max-h-9"
+                  className="max-w-9 max-h-9 rounded-full"
                 />
               </div>
-              <h3 className="text-2xl mt-4 pl-3 font-bold capitalize text-white">
+              <h3 className="text-2xl mt-4 pl-3 font-bold capitalize text-white wrap-break-word">
                 {link.title}
               </h3>
               <div className="absolute top-4 right-4 flex gap-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition">
